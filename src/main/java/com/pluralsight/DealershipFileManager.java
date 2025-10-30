@@ -43,38 +43,43 @@ public class DealershipFileManager {
 
                 d.addVehicle(v);
             }
-
-
-
+            bufferedReader.close(); // makes it stop reading next line
 
         } catch(Exception e){
-            System.out.println("Error");
+            e.printStackTrace();
+            System.out.println("getting Error from here lalkadadad");
         }
         return d;
     }
 
+
+
     //Logic behind writing and saving info in file
-    public void saveDealership(Dealership d){
+    public static void saveDealership(Dealership d){
 
         //Creates File/Buffered writer, Asks for specific info to split between "|"
         try{
-            FileWriter fileWriter = new FileWriter("inventory.csv", true);
+            FileWriter fileWriter = new FileWriter("inventory.csv", false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(d.getName() + "|" +
+                    d.getAddress() + "|" +
+                    d.getPhone());
 
             for(Vehicle v : d.getAllVehicles()){
                 bufferedWriter.newLine();
-                bufferedWriter.write(v.getVin() + " | "
-                        + v.getYear() +" | "
-                        + v.getMake() + " | "
-                        + v.getModel() + " | "
-                        + v.getVehicleType() + " | "
-                        + v.getColor() + " | "
-                        + v.getOdometer() + " | "
+                bufferedWriter.write(v.getVin() + "|"
+                        + v.getYear() +"|"
+                        + v.getMake() + "|"
+                        + v.getModel() + "|"
+                        + v.getVehicleType() + "|"
+                        + v.getColor() + "|"
+                        + v.getOdometer() + "|"
                         + v.getPrice());
             }
             bufferedWriter.close();
 
         } catch(Exception e){
+            e.printStackTrace();
             System.out.println("Error");
         }
 

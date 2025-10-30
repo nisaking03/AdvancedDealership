@@ -32,11 +32,12 @@ public class Dealership {
 
     //Creates a list for each specific info to refer to
     public List<Vehicle> getVehicleByPrice(double min, double max){
-        ArrayList<Vehicle> result = new ArrayList<>();
+        List<Vehicle> result = new ArrayList<>();
 
-        for (Vehicle vehicle : inventory){
-            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max){
-                result.add(vehicle);
+        for (Vehicle v : inventory){
+            if (v.getPrice() >= min && v.getPrice() <= max){
+                result.add(v);
+                System.out.println(v);
             }
         }
         return result;
