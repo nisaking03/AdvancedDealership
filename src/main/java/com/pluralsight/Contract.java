@@ -5,12 +5,11 @@ public abstract class Contract {
     String customerName;
     String customerEmail;
     String vehicleSold;
-    int totalPrice;
-    int monthlyPayment;
+//    These will be calculated
+//    int totalPrice;
+//    int monthlyPayment;
 
-    public Contract(int monthlyPayment, int totalPrice, String vehicleSold, String customerEmail, String customerName, String date) {
-        this.monthlyPayment = monthlyPayment;
-        this.totalPrice = totalPrice;
+    public Contract(String vehicleSold, String customerEmail, String customerName, String date) {
         this.vehicleSold = vehicleSold;
         this.customerEmail = customerEmail;
         this.customerName = customerName;
@@ -46,9 +45,7 @@ public abstract class Contract {
     }
 
     // will return computed values based on contract type
-    public abstract int getTotalPrice();
-    public abstract void setTotalPrice(int totalPrice);
+    public abstract double getTotalPrice();
 
-    public abstract int getMonthlyPayment();
-    public abstract void setMonthlyPayment(int monthlyPayment);
+    public abstract double getMonthlyPayment();
 }
