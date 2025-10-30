@@ -15,7 +15,7 @@ public class UserInterface {
 
     public void display(){
         String mainMenu =
-                "1 - Find vehicles within a price range\n" +
+                        "1 - Find vehicles within a price range\n" +
                         "2 - Find vehicles by make / model\n" +
                         "3 - Find vehicles by year range\n" +
                         "4 - Find vehicles by color\n" +
@@ -24,6 +24,7 @@ public class UserInterface {
                         "7 - List ALL vehicles\n" +
                         "8 - Add a vehicle\n" +
                         "9 - Remove a vehicle\n" +
+                        "99 - Sell/Lease a vehicle\n" +
                         "0 - Quit \n";
 
 
@@ -61,10 +62,13 @@ public class UserInterface {
                 case 9:
                     processRemoveVehicleRequest();
                     break;
+                case 99:
+                    processSellOrLease();
+                    break;
                 case 0: //exit
                     return;
                 default:
-                    System.out.println("Invalid entry"); //Error message
+                    System.out.println("Invalid Entry!"); //Error message
                     break;
 
             }
@@ -154,5 +158,43 @@ public class UserInterface {
         if(found == false){
             System.out.println("Could not find that Vehicles VIN");
         }
+    }
+    private void processSellOrLease(){
+        String sellOrLease =
+                "S - Sell your vehicle \n" +
+                "L - Lease your vehicle \n" +
+                "B - Back to Main menu \n";
+        while (true){
+            System.out.println(sellOrLease);
+            char command;
+
+            command = ConsoleHelper.promptForChar("Enter \"Sell\" or \"Lease\"");
+
+            switch (command){
+                case 'S':
+                    processSell();
+                    break;
+                case 'L':
+                    processSLease();
+                    break;
+                case 'B':
+                    return;
+                default:
+                    System.out.println("Invalid Entry!");
+                    break;
+            }
+        }
+    }
+    private void processSell(){
+        //• collect basic sales information from the user
+        //• add the vehicle information to the contract
+        //• ask if it is a sale or lease  (Note: you can't lease a vehicle over 3 years old)
+        //• calculate pricing
+    }
+    private void processSLease(){
+        //• collect basic sales information from the user
+        //• add the vehicle information to the contract
+        //• ask if it is a sale or lease  (Note: you can't lease a vehicle over 3 years old)
+        //• calculate pricing
     }
 }
