@@ -52,8 +52,6 @@ public class DealershipFileManager {
         return d;
     }
 
-
-
     //Logic behind writing and saving info in file
     public static void saveDealership(Dealership d){
 

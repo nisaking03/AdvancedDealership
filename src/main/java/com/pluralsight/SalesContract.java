@@ -1,12 +1,23 @@
 package com.pluralsight;
 
 public class SalesContract extends Contract{
-    public SalesContract(String vehicleSold, String customerEmail, String customerName, String date) {
+    private double salesTaxAmount;
+    private double recordingFee;
+    private double processingFee;
+    private boolean financeOption;
+    public SalesContract(String vehicleSold, String customerEmail, String customerName, String date,
+                         double salesTaxAmount, double recordingFee, double processingFee, boolean financeOption) {
         super(vehicleSold, customerEmail, customerName, date);
+        this.salesTaxAmount = salesTaxAmount;
+        this.recordingFee = recordingFee;
+        this.processingFee = processingFee;
+        this.financeOption = financeOption;
     }
 
     @Override
     public double getTotalPrice() {
+        // Calculate as vehicle price + sales tax (5%) +
+        // recording fee ($100) + processing fee ($295 or $495)
         return 0;
     }
 
@@ -14,7 +25,10 @@ public class SalesContract extends Contract{
     public double getMonthlyPayment() {
         return 0;
     }
-
+    // Calculate based on finance option
+    // If NO finance: return 0.00
+    // If YES and price ≥ $10,000: 4.25% interest, 48 months
+    // If YES and price < $10,000: 5.25% interest, 24 months
 }
 //• Sales Tax Amount (5%)
 //• Recording Fee ($100)

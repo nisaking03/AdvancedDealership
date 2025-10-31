@@ -225,13 +225,13 @@ public class UserInterface {
 
         //• collect basic sales information from the user
         int VIN  = ConsoleHelper.promptForInt("What is the vehicle VIN number");
-        int year = ConsoleHelper.promptForInt("What is the Year of your vehicle");
-        String make = ConsoleHelper.promptForString("What is the vehicle make?");
-        String model = ConsoleHelper.promptForString("What is the vehicle model?");
-        String vehicleType = ConsoleHelper.promptForString("What is the vehicle type");
-        String color = ConsoleHelper.promptForString("What is the color of the vehicle");
-        int odometer = ConsoleHelper.promptForInt("What is the mileage of the vehicle");
-        double price = ConsoleHelper.promptForDouble("What is your asking price for the vehicle");
+//        int year = ConsoleHelper.promptForInt("What is the Year of your vehicle");
+//        String make = ConsoleHelper.promptForString("What is the vehicle make?");
+//        String model = ConsoleHelper.promptForString("What is the vehicle model?");
+//        String vehicleType = ConsoleHelper.promptForString("What is the vehicle type");
+//        String color = ConsoleHelper.promptForString("What is the color of the vehicle");
+//        int odometer = ConsoleHelper.promptForInt("What is the mileage of the vehicle");
+//        double price = ConsoleHelper.promptForDouble("What is your asking price for the vehicle");
 
         //• add the vehicle information to the contract
         //• ask if it is a sale or lease  (Note: you can't lease a vehicle over 3 years old)
@@ -241,13 +241,13 @@ public class UserInterface {
 
         //• collect basic sales information from the user
         int VIN  = ConsoleHelper.promptForInt("What is the vehicle VIN number");
-        int year = ConsoleHelper.promptForInt("What is the Year of your vehicle");
-        String make = ConsoleHelper.promptForString("What is the vehicle make?");
-        String model = ConsoleHelper.promptForString("What is the vehicle model?");
-        String vehicleType = ConsoleHelper.promptForString("What is the vehicle type");
-        String color = ConsoleHelper.promptForString("What is the color of the vehicle");
-        int odometer = ConsoleHelper.promptForInt("What is the mileage of the vehicle");
-        double price = ConsoleHelper.promptForDouble("What is your asking price for the vehicle");
+//        int year = ConsoleHelper.promptForInt("What is the Year of your vehicle");
+//        String make = ConsoleHelper.promptForString("What is the vehicle make?");
+//        String model = ConsoleHelper.promptForString("What is the vehicle model?");
+//        String vehicleType = ConsoleHelper.promptForString("What is the vehicle type");
+//        String color = ConsoleHelper.promptForString("What is the color of the vehicle");
+//        int odometer = ConsoleHelper.promptForInt("What is the mileage of the vehicle");
+//        double price = ConsoleHelper.promptForDouble("What is your asking price for the vehicle");
 
         //• add the vehicle information to the contract
         //• ask if it is a sale or lease  (Note: you can't lease a vehicle over 3 years old)

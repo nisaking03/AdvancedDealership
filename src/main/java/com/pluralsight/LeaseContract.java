@@ -7,11 +7,15 @@ public class LeaseContract extends Contract{
 
     @Override
     public double getTotalPrice() {
+        //Calculate as vehicle price + lease fee (7% of price)
         return 0;
     }
 
     @Override
     public double getMonthlyPayment() {
+        // Calculate based on 4.0% interest, 36 months
+        //Use the formula: (adjusted capitalized cost - residual value) /
+        // term + monthly interest charge
         return 0;
     }
 
