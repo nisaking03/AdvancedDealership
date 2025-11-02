@@ -16,7 +16,7 @@ public abstract class Contract {
         Date = date;
     }
 
-    public String getDate() {
+    public String getContractDate() {
         return Date;
     }
     public void setDate(String date) {
