@@ -14,14 +14,17 @@ public class SalesContract extends Contract {
         this.recordingFee = recordingFee;
         this.processingFee = processingFee;
         this.financeOption = financeOption;
-
-//        this.salesTax = getVehicleSold().getPrice() * 0.05; //sales tax is 5% of the Vehicles Price
-//        this.recordingFee = 100.00; //• Recording Fee ($100)
-//        this.processingFee = (vehicleSold.getPrice() < 10_000) ? 295 : 495 ; //• Processing fee ($295 for vehicles under $10,000 and $495 for all others
-//        this.finance = finance; //• Monthly payment (if financed)
     }
 
-
+    // this.salesTax = getVehicleSold().getPrice() * 0.05;
+    // sales tax is 5% of the Vehicles Price
+    // this.recordingFee = 100.00;
+    // Recording Fee ($100)
+    // this.processingFee = (vehicleSold.getPrice() < 10_000) ? 295 : 495 ;
+    // Processing fee ($295 for vehicles under $10,000 and $495 for all others
+    // this.finance = finance;
+    // Monthly payment (if financed)
+    
     public double getSalesTaxAmount() {
         return salesTaxAmount;
     }

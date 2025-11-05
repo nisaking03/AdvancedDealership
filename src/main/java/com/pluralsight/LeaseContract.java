@@ -30,9 +30,9 @@ public class LeaseContract extends Contract{
 
     @Override
     public double getMonthlyPayment() {
-        // Calculate based on 4.0% interest, 36 months
+        //Calculate based on 4.0% interest, 36 months
         //Use the formula: (adjusted capitalized cost - residual value) /
-        // term + monthly interest charge
+        //term + monthly interest charge
         double totalPrice = getTotalPrice();
 
         double annualRate = 0.04;
