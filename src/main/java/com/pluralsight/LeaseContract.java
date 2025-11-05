@@ -1,14 +1,31 @@
 package com.pluralsight;
 
 public class LeaseContract extends Contract{
-    public LeaseContract(String vehicleSold, String customerEmail, String customerName, String date) {
+    private double expectedEndingValue;
+    private double leaseFee;
+
+    public LeaseContract(Vehicle vehicleSold, String customerEmail, String customerName,
+                         String date, double expectedEndingValue, double leaseFee) {
         super(vehicleSold, customerEmail, customerName, date);
+
+        // Calculate the lease-specific values:
+        this.expectedEndingValue = vehicleSold.getPrice() * 0.5; // 50% of the original price
+        this.leaseFee = vehicleSold.getPrice() * 0.07;           // 7% lease fee
+
+    }
+
+    public double getExpectedEndingValue() {
+        return expectedEndingValue;
+    }
+
+    public double getLeaseFee() {
+        return leaseFee;
     }
 
     @Override
     public double getTotalPrice() {
         //Calculate as vehicle price + lease fee (7% of price)
-        return 0;
+        return getVehicleSold().getPrice() + leaseFee;
     }
 
     @Override
@@ -16,7 +33,14 @@ public class LeaseContract extends Contract{
         // Calculate based on 4.0% interest, 36 months
         //Use the formula: (adjusted capitalized cost - residual value) /
         // term + monthly interest charge
-        return 0;
+        double totalPrice = getTotalPrice();
+
+        double annualRate = 0.04;
+        double monthlyRate = annualRate / 12;
+        int months = 36;
+
+        double monthlyPayment = (totalPrice / months) + (totalPrice * monthlyRate);
+        return monthlyPayment;
     }
 
 }

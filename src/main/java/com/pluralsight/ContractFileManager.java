@@ -2,94 +2,58 @@ package com.pluralsight;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class ContractFileManager {
-    public void saveContract(Contract contract){
 
-        //If it's a Sales Contract
-        if(contract instanceof SalesContract){
-            try{
-                FileWriter fileWriter = new FileWriter("Contracts.csv" , true);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+    public void saveContract(Contract contract) {
 
-                //Casting our contract
-                //Type of Variable _ varible name = (Cast Type) original type
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("inventory.csv", true))) {
+
+            String line = "";
+
+            // Checking if it is a lease contract or not
+            if (contract instanceof LeaseContract) {
+                LeaseContract lease = (LeaseContract) contract;
+
+                // then format how the lease contract data should look
+                line = String.format("Lease|%s|%s|%s|%s|%.2f|%.2f",
+                        lease.getContractDate(),
+                        lease.getCustomerName(),
+                        lease.getCustomerEmail(),
+                        lease.getVehicleSold().getVin(),
+                        lease.getTotalPrice(),
+                        lease.getMonthlyPayment());
+
+            }
+            // Or if it's a Sales contract :
+            else if (contract instanceof SalesContract) {
+
                 SalesContract sale = (SalesContract) contract;
 
-                //Write the Sales Contract information
-//                String saleContractData=
-//                        "SALE"
-//                                + "|" + sale.getContractDate()
-//                                + "|" + sale.getCustomerName()
-//                                + "|" + sale.getCustomerEmail()
-//                                + "|" + sale.getVehicleSold().getVin()
-//                                + "|" + sale.getVehicleSold().getYear()
-//                                + "|" + sale.getVehicleSold().getMake()
-//                                + "|" + sale.getVehicleSold().getModel()
-//                                + "|" + sale.getVehicleSold().getVehicleType()
-//                                + "|" + sale.getVehicleSold().getColor()
-//                                + "|" + sale.getVehicleSold().getOdometer()
-//                                + "|" + sale.getVehicleSold().getPrice()
-//                                + "|" + sale.getSalesTax()
-//                                + "|" + sale.getRecordingFee()
-//                                + "|" + sale.getProcessingFee()
-//                                + "|" + sale.getTotalPrice()
-//                                + "|" + sale.isFinance()
-//                                + "|" + sale.getMonthlyPayment();
-//
-//                //Write our contract
-//                bufferedWriter.write(saleContractData);
+                // Format how the sales contract would look like
+                line = String.format("Sale|%s|%s|%s|%s|%.2f|%.2f",
+                        sale.getContractDate(),
+                        sale.getCustomerName(),
+                        sale.getCustomerEmail(),
+                        sale.getVehicleSold().getVin(),
+                        sale.getTotalPrice(),
+                        sale.getMonthlyPayment());
 
-                //Add a new line so it's not clumped together
-                bufferedWriter.newLine();
-                bufferedWriter.close();
-
-            }catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Sales contract writer is corrupted");
             }
+            bw.write(line); // writes that line to the file
+            bw.newLine();   // moves the cursor to the new line
+            bw.close();     // closes the buffered writer
+
+            System.out.println(line);
+
+        } catch (IOException e) {
+            System.out.println("There was an Error!");;
         }
-
-        //If it's Lease Contract
-        if(contract instanceof LeaseContract){
-            try{
-                FileWriter fileWriter = new FileWriter("Contracts.csv" ,true);
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-                LeaseContract lease = (LeaseContract) contract;
-                //Write the Sales Contract information
-//                String leaseContractData =
-//
-////                        "LEASE"
-////                                + "|" + lease.getContractDate()
-////                                + "|" + lease.getCustomerName()
-////                                + "|" + lease.getCustomerEmail()
-////                                + "|" + lease.getVehicleSold().getVin()
-////                                + "|" + lease.getVehicleSold().getYear()
-////                                + "|" + lease.getVehicleSold().getMake()
-////                                + "|" + lease.getVehicleSold().getModel()
-////                                + "|" + lease.getVehicleSold().getVehicleType()
-////                                + "|" + lease.getVehicleSold().getColor()
-////                                + "|" + lease.getVehicleSold().getOdometer()
-////                                + "|" + lease.getVehicleSold().getPrice()
-////                                + "|" + lease.getEndingValue()
-////                                + "|" + lease.getLeaseFee()
-////                                + "|" + lease.getTotalPrice()
-////                                + "|" + lease.getMonthlyPayment();
-//
-//                bufferedWriter.write(leaseContractData);
-                bufferedWriter.newLine();
-                bufferedWriter.close();
-
-
-            }catch (Exception e){
-                e.printStackTrace();
-                System.out.println("Lease contract writer is corrupted");
-            }
-        }
-
 
     }
+
 }
 //ContractFileManager and add a method to save the contract by
 //APPENDING it to your contracts file
